@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.rest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,21 +17,21 @@ import com.example.demo.Services.IMatHangService;
 import com.example.demo.payload.ResponseMessage;
 
 @RestController
-@RequestMapping("/api")
-public class MatHangController {
+@RequestMapping("/NCC")
+public class MatHangRest {
 	@Autowired
 	IMatHangService service;
-	@GetMapping("/NCC")
+	@GetMapping("")
 	public ResponseEntity<List<MatHang>> getList(){
 		List<MatHang> list = service.getList();
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
-	@GetMapping("/NCC/{maHang}")
+	@GetMapping("/{maHang}")
 	public ResponseEntity<MatHang> getOne(@PathVariable("maHang") String maHang) {
 		MatHang matHang = service.getOneMatHang(maHang);
 		return ResponseEntity.status(HttpStatus.OK).body(matHang);
 	}
-	@PostMapping("/NCC/insert")
+	@PostMapping("/insert")
 	public ResponseEntity<ResponseMessage> createMatHang(@RequestBody MatHang mathang){
 		ResponseMessage rm = new ResponseMessage();
 		if(service.getOneMatHang(mathang.getMaHang()).getMaHang() == null){

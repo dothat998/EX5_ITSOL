@@ -1,73 +1,59 @@
 package com.example.demo.dto;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class NhanVienDTO {
-    private Integer nhanVien;
-
-    private String Ho;
-
-    private String Ten;
-
-    private String ngaySinh;
-
-    private String ngayLamViec;
-
+    private String maNhanVien;
+    private String ho;
+    private String ten;
+    private Date ngaySinh;
+    private Date ngayLamViec;
     private String diaChi;
-
     private String dienThoai;
-
     private BigDecimal luongCoBan;
-
     private BigDecimal phuCap;
 
-    public NhanVienDTO(Integer nhanVien, String ho, String ten) {
-        this.nhanVien = nhanVien;
-        Ho = ho;
-        Ten = ten;
-    }
-
     public NhanVienDTO() {
-
     }
 
-    public Integer getNhanVien() {
-        return nhanVien;
+    public String getMaNhanVien() {
+        return maNhanVien;
     }
 
-    public void setNhanVien(Integer nhanVien) {
-        this.nhanVien = nhanVien;
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
 
     public String getHo() {
-        return Ho;
+        return ho;
     }
 
     public void setHo(String ho) {
-        Ho = ho;
+        this.ho = ho;
     }
 
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        this.ten = ten;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
-    public String getNgayLamViec() {
+    public Date getNgayLamViec() {
         return ngayLamViec;
     }
 
-    public void setNgayLamViec(String ngayLamViec) {
+    public void setNgayLamViec(Date ngayLamViec) {
         this.ngayLamViec = ngayLamViec;
     }
 
