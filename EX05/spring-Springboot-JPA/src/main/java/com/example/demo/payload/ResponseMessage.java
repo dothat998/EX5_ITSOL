@@ -1,23 +1,18 @@
 package com.example.demo.payload;
 
-import com.example.demo.Entity.MatHang;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.demo.Entity.MatHangBO;
 
 public class ResponseMessage {
 	private String message;
-	private MatHang matHang;
+	private MatHangBO matHangBO;
 	public ResponseMessage(String message) {
 		this.message = message;
 	}
 
 	 public ResponseMessage(){}
-	public ResponseMessage(String message, MatHang matHang) {
+	public ResponseMessage(String message, MatHangBO matHangBO) {
 		this.message = message;
-		this.matHang = matHang;
+		this.matHangBO = matHangBO;
 	}
 
 	public String getMessage() {
@@ -28,11 +23,11 @@ public class ResponseMessage {
 		this.message = message;
 	}
 
-	public MatHang getMatHang() {
-		return matHang;
+	public MatHangBO getMatHang() {
+		return matHangBO;
 	}
 
-	public void setMatHang(MatHang matHang) {
-		this.matHang = matHang;
+	public void setMatHang(MatHangBO matHangBO) {
+		this.matHangBO = matHangBO;
 	}
 }

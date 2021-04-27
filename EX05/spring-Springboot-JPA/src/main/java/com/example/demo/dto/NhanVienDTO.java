@@ -17,6 +17,12 @@ public class NhanVienDTO {
     public NhanVienDTO() {
     }
 
+    public NhanVienDTO(String maNhanVien, String ho, String ten) {
+        this.maNhanVien = maNhanVien;
+        this.ho = ho;
+        this.ten = ten;
+    }
+
     public String getMaNhanVien() {
         return maNhanVien;
     }

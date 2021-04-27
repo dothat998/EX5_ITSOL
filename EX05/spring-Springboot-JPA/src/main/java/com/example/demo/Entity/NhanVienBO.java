@@ -1,13 +1,25 @@
 package com.example.demo.Entity;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.demo.dto.NhanVienDTO;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
     @Entity
     @Table(name = "nhanvien")
+    @SqlResultSetMapping(
+            name="emp_not_sales_mapping",
+            classes = {
+                    @ConstructorResult(
+                            targetClass = NhanVienDTO.class,
+                            columns = {
+                                    @ColumnResult(name = "MANHANVIEN", type = String.class),
+                                    @ColumnResult(name = "HO", type = String.class),
+                                    @ColumnResult(name = "TEN", type = String.class),
+                            }
+                    )
+            }
+    )
     public class NhanVienBO {
         @Id
         @Column(name = "MANHANVIEN")

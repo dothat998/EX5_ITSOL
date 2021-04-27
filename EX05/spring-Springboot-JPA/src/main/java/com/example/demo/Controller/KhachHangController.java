@@ -1,25 +1,19 @@
-package com.example.demo.rest;
+package com.example.demo.Controller;
 
 import com.example.demo.Entity.KhachHangBO;
-import com.example.demo.Entity.NhanVienBO;
 import com.example.demo.Services.IKhachHangService;
-import com.example.demo.Services.INhanVien;
 import com.example.demo.dto.KhachHangDTO;
 import com.example.demo.mapper.KhachHangMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Controller
-@RequestMapping("/KH")
-public class KhachHangRest {
+@RestController
+@RequestMapping("/kh")
+public class KhachHangController {
     @Autowired
     IKhachHangService iKhachHangService;
     @Autowired
@@ -40,4 +34,11 @@ public class KhachHangRest {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
+
+    @DeleteMapping("/delete-kh/{maKhachHang}")
+    public ResponseEntity<String> deleteKh(@PathVariable String maKhachHang) {
+        iKhachHangService.delete(maKhachHang);
+        return ResponseEntity.ok("Thanh cong");
+    }
+
 }

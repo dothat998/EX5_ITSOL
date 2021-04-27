@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "mathang")
 
-public class MatHang{
+public class MatHangBO {
 	
 	@Id
 	@Column( name = "mahang", length = 10)
@@ -32,8 +32,8 @@ public class MatHang{
 	private String donViTinh;
 	@Column( name = "giahang")
 	private double giaHang;
-public MatHang(){}
-	public MatHang(String maHang, String tenHang, String maCongTy, int maLoaiHang, int soLuong, String donViTinh, double giaHang) {
+public MatHangBO(){}
+	public MatHangBO(String maHang, String tenHang, String maCongTy, int maLoaiHang, int soLuong, String donViTinh, double giaHang) {
 		this.maHang = maHang;
 		this.tenHang = tenHang;
 		this.maCongTy = maCongTy;

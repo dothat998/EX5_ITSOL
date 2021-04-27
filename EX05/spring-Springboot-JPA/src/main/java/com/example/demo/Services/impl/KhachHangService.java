@@ -35,6 +35,6 @@ public class KhachHangService implements IKhachHangService {
 
     @Override
     public void delete(String maKH) {
-
+        khachHangRepository.deleteById(maKH);
     }
 }

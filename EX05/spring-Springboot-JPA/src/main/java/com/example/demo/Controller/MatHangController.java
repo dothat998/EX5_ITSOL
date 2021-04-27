@@ -1,4 +1,4 @@
-package com.example.demo.rest;
+package com.example.demo.Controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,27 +12,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Entity.MatHang;
+import com.example.demo.Entity.MatHangBO;
 import com.example.demo.Services.IMatHangService;
 import com.example.demo.payload.ResponseMessage;
 
 @RestController
 @RequestMapping("/NCC")
-public class MatHangRest {
+public class MatHangController {
 	@Autowired
 	IMatHangService service;
 	@GetMapping("")
-	public ResponseEntity<List<MatHang>> getList(){
-		List<MatHang> list = service.getList();
+	public ResponseEntity<List<MatHangBO>> getList(){
+		List<MatHangBO> list = service.getList();
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
 	@GetMapping("/{maHang}")
-	public ResponseEntity<MatHang> getOne(@PathVariable("maHang") String maHang) {
-		MatHang matHang = service.getOneMatHang(maHang);
-		return ResponseEntity.status(HttpStatus.OK).body(matHang);
+	public ResponseEntity<MatHangBO> getOne(@PathVariable("maHang") String maHang) {
+		MatHangBO matHangBO = service.getOneMatHang(maHang);
+		return ResponseEntity.status(HttpStatus.OK).body(matHangBO);
 	}
 	@PostMapping("/insert")
-	public ResponseEntity<ResponseMessage> createMatHang(@RequestBody MatHang mathang){
+	public ResponseEntity<ResponseMessage> createMatHang(@RequestBody MatHangBO mathang){
 		ResponseMessage rm = new ResponseMessage();
 		if(service.getOneMatHang(mathang.getMaHang()).getMaHang() == null){
 			rm.setMatHang(service.save(mathang));
@@ -44,10 +44,10 @@ public class MatHangRest {
 		return ResponseEntity.status(HttpStatus.OK).body(rm);
 	}
 	@PutMapping("/NCC/update/{maHang}")
-	public ResponseEntity<ResponseMessage> updateMatHang(@RequestBody MatHang matHang, @PathVariable("maHang") String maHang){
+	public ResponseEntity<ResponseMessage> updateMatHang(@RequestBody MatHangBO matHangBO, @PathVariable("maHang") String maHang){
 		ResponseMessage rm = new ResponseMessage();
-		matHang.setMaHang(maHang);
-		MatHang mH = service.save(matHang);
+		matHangBO.setMaHang(maHang);
+		MatHangBO mH = service.save(matHangBO);
 		if( mH == null ) {
 			rm.setMessage("Cập Nhật Thất bại");
 		}else {
